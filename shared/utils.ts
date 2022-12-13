@@ -12,3 +12,10 @@ export const logResult = (obj: unknown): any => {
   console.log(JSON.stringify(obj, null, 4));
   return obj;
 };
+
+export const trace =
+  <A>(label: string) =>
+  (a: A): A => {
+    console.log(`${label}: ${JSON.stringify(a)}`);
+    return a;
+  };
