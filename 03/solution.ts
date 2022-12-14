@@ -1,11 +1,3 @@
-//for each pach
-//get priority of item shared
-// - split the string in two
-// - create a map of the first array and check all of the second ones in the first one
-// - if match return char
-// - convert char to priority
-//sum all priorities
-
 import * as A from "fp-ts/lib/Array";
 import * as E from "fp-ts/lib/Either";
 import { flow, pipe } from "fp-ts/lib/function";
