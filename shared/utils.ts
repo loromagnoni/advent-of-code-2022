@@ -5,7 +5,7 @@ export const readFromFile = (fileName: string): string => {
 };
 
 export const mapLinesToArray = (s: string): string[] => {
-  return s.split("\n");
+  return s.split("\n").filter((l) => !!l);
 };
 
 export const logResult = (obj: unknown): any => {
