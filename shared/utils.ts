@@ -9,7 +9,8 @@ export const mapLinesToArray = (s: string): string[] => {
 };
 
 export const logResult = (obj: unknown): any => {
-  console.log(JSON.stringify(obj, null, 4));
+  if (typeof obj === "string") console.log(obj);
+  else console.log(JSON.stringify(obj, null, 4));
   return obj;
 };
 
