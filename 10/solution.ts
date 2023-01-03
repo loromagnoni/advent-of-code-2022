@@ -2,6 +2,7 @@ import { constFalse, flow } from "fp-ts/lib/function";
 import {
   logResult,
   mapLinesToArray,
+  range,
   readFromFile,
   trace,
 } from "../shared/utils";
@@ -97,9 +98,6 @@ const firstPartStrategy = flow(
 
 const firstPartSolution = solution(firstPartStrategy);
 firstPartSolution(`${__dirname}/input/input.txt`);
-
-const range = (start: number, end: number): number[] =>
-  Array.from({ length: end - start + 1 }, (_, i) => i + start);
 
 const expandCycles = (cycles: Cycle[]): Cycle[] =>
   cycles.slice(1).reduce(
