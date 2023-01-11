@@ -23,3 +23,14 @@ export const trace =
 
 export const range = (start: number, end: number): number[] =>
   Array.from({ length: end - start + 1 }, (_, i) => i + start);
+
+export const groupBy =
+  <T>(dim: number) =>
+  (arr: T[]) =>
+    arr.reduce(
+      (acc, curr, i) =>
+        i % dim
+          ? [...acc.slice(0, -1), [...acc.slice(-1)[0], curr]]
+          : [...acc, [curr]],
+      [] as T[][]
+    );

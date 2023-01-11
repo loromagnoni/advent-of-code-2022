@@ -1,5 +1,6 @@
 import { constFalse, flow } from "fp-ts/lib/function";
 import {
+  groupBy,
   logResult,
   mapLinesToArray,
   range,
@@ -123,17 +124,6 @@ const toPixel = (cycles: Cycle[]): string[] =>
     ],
     [] as string[]
   );
-
-const groupBy =
-  <T>(dim: number) =>
-  (arr: T[]) =>
-    arr.reduce(
-      (acc, curr, i) =>
-        i % dim
-          ? [...acc.slice(0, -1), [...acc.slice(-1)[0], curr]]
-          : [...acc, [curr]],
-      [] as T[][]
-    );
 
 const render = (lines: string[][]): string =>
   lines.map((line) => line.join("")).join("\n");
