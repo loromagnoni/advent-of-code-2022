@@ -1,5 +1,10 @@
 import { flow } from "fp-ts/lib/function";
-import { logResult, mapLinesToArray, readFromFile } from "../shared/utils";
+import {
+  logResult,
+  mapLinesToArray,
+  readFromFile,
+  unique,
+} from "../shared/utils";
 
 type NodeID = `${number}:${number}`;
 
@@ -102,8 +107,6 @@ const toSearchStates =
       currentVisiting: [start],
       graph,
     }));
-
-const unique = <T>(arr: Array<T>): Array<T> => [...new Set(arr)];
 
 const getExpandedRing = (
   ring: Array<NodeID>,

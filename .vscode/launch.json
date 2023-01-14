@@ -10,6 +10,7 @@
                 "-r",
                 "ts-node/register"
             ],
+            "console": "integratedTerminal",
             "args": [
                 "${file}"
             ]
