@@ -10,7 +10,14 @@ export const mapLinesToArray = (s: string): string[] => {
 
 export const logResult = (obj: unknown): any => {
   if (typeof obj === "string") console.log(obj);
-  else console.log(JSON.stringify(obj, null, 4));
+  else
+    console.log(
+      JSON.stringify(
+        obj,
+        (key, value) => (typeof value === "bigint" ? value.toString() : value),
+        4
+      )
+    );
   return obj;
 };
 
@@ -36,3 +43,5 @@ export const groupBy =
     );
 
 export const unique = <T>(arr: Array<T>): Array<T> => [...new Set(arr)];
+
+export const isNotEmpty = <T>(a: T | undefined): a is T => !!a;

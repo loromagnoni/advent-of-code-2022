@@ -1,6 +1,7 @@
 import { flow, pipe } from "fp-ts/lib/function";
 import {
   groupBy,
+  isNotEmpty,
   logResult,
   mapLinesToArray,
   range,
@@ -89,8 +90,6 @@ const unionSegments = (segments: SegmentBoundaries[]): SegmentBoundaries[] =>
 
 const getLength = (segments: SegmentBoundaries[]): number =>
   segments.map(([start, end]) => end - start).reduce((a, b) => a + b, 0);
-
-const isNotEmpty = <T>(a: T | undefined): a is T => !!a;
 
 type SolutionStrategy = (sbs: SegmentBoundaries[]) => number;
 

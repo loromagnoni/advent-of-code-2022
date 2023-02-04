@@ -1,0 +1,10 @@
+Valve AA has flow rate=0; tunnels lead to valves DK, II, BJ
+Valve BJ has flow rate=13; tunnels lead to valves CH, AA
+Valve CH has flow rate=2; tunnels lead to valves DK, BJ
+Valve DK has flow rate=20; tunnels lead to valves CH, AA, EE
+Valve EE has flow rate=3; tunnels lead to valves FF, DK
+Valve FF has flow rate=0; tunnels lead to valves EE, GG
+Valve GG has flow rate=0; tunnels lead to valves FF, HH
+Valve HH has flow rate=22; tunnel leads to valve GG
+Valve II has flow rate=0; tunnels lead to valves AA, JJ
+Valve JJ has flow rate=21; tunnel leads to valve II

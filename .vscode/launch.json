@@ -5,13 +5,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Debug Program",
             "runtimeArgs": [
                 "-r",
-                "ts-node/register"
+                "ts-node/register",
             ],
             "console": "integratedTerminal",
             "args": [
+                "--max-old-space-size=8192",
                 "${file}"
             ]
         }
