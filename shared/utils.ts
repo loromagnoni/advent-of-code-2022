@@ -45,3 +45,12 @@ export const groupBy =
 export const unique = <T>(arr: Array<T>): Array<T> => [...new Set(arr)];
 
 export const isNotEmpty = <T>(a: T | undefined): a is T => !!a;
+
+export const trampoline = <T>(f: () => T | (() => T)): T => {
+  let result = f();
+  while (typeof result === "function") result = (result as Function)();
+  return result;
+};
+
+export const deepCopy = <T extends Object>(obj: T): T =>
+  JSON.parse(JSON.stringify(obj));

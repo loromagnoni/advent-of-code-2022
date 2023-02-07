@@ -1,5 +1,10 @@
 import { flow, pipe } from "fp-ts/lib/function";
-import { logResult, mapLinesToArray, readFromFile } from "../shared/utils";
+import {
+  logResult,
+  mapLinesToArray,
+  readFromFile,
+  trampoline,
+} from "../shared/utils";
 
 type Point = [number, number];
 
@@ -140,12 +145,6 @@ const droppedPosition = (
   getNextPositionTracks(fixed, position, floorY)[
     getNextMovement(fixed, position, floorY)
   ]();
-
-const trampoline = (f: () => number | (() => number)): number | undefined => {
-  let result = f();
-  while (typeof result === "function") result = result();
-  return result;
-};
 
 type PourSand = (() => PourSand) | number;
 
