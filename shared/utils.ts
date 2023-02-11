@@ -54,3 +54,10 @@ export const trampoline = <T>(f: () => T | (() => T)): T => {
 
 export const deepCopy = <T extends Object>(obj: T): T =>
   JSON.parse(JSON.stringify(obj));
+
+export const logTimeCost = (label: string, fn: Function) => {
+  console.time(label);
+  const res = fn();
+  console.timeEnd(label);
+  return res;
+};
