@@ -1,5 +1,6 @@
 import { constFalse, flow } from "fp-ts/lib/function";
 import {
+  getSum,
   groupBy,
   logResult,
   mapLinesToArray,
@@ -71,8 +72,6 @@ const getCycles =
 
 const toStrenght = (cycles: Cycle[]): number[] =>
   cycles.map((c) => c.registry * c.index);
-
-const getSum = (arr: number[]) => arr.reduce((acc, i) => acc + i, 0);
 
 const solution = (
   strategy: (

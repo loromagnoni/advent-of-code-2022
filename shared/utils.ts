@@ -61,3 +61,6 @@ export const logTimeCost = (label: string, fn: Function) => {
   console.timeEnd(label);
   return res;
 };
+
+export const getSum = (arr: number[]) => arr.reduce((acc, i) => acc + i, 0);
+export const getProduct = (arr: number[]) => arr.reduce((acc, i) => acc * i, 0);
