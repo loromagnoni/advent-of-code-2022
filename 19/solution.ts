@@ -178,6 +178,20 @@ const getStateAfterRobotBuild = (state: State, robot: Robot): State =>
 const getMissingTime = (state: State): number =>
   state.maxTime - state.initialTime;
 
+const capInventory = (state: State): Inventory =>
+  Object.fromEntries(
+    Object.entries(state.inventory).map(([resource, count]) => [
+      Number(resource),
+      Math.min(
+        count,
+        Number(resource) === Resource.GEODE
+          ? count
+          : (state.maxTime - state.initialTime) *
+              state.maxResourceSpend[Number(resource) as Resource]
+      ),
+    ])
+  ) as Inventory;
+
 const maxGeodesOpened = (
   cache: Cache,
   state: State,
@@ -189,6 +203,7 @@ const maxGeodesOpened = (
       state.inventory[Resource.GEODE],
       [`finish!, GEODES:${state.inventory[Resource.GEODE]}`],
     ];
+  state.inventory = capInventory(state);
   const key = getCacheKey(state);
   if (cache[key]) return [cache[key][0], [action, ...cache[key][1]]];
   const openedWithoutNewRobots = [
