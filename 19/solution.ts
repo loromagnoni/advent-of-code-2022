@@ -6,6 +6,7 @@ import {
   logResult,
   mapLinesToArray,
   readFromFile,
+  timing,
 } from "../shared/utils";
 
 enum Resource {
@@ -264,7 +265,7 @@ const solution = (strategy: (blueprints: Blueprint[]) => number) =>
 
 const firstPartSolution = solution(flow(A.map(toQualityLevel), getSum));
 
-//firstPartSolution(`${__dirname}/input/input.txt`);
+timing(() => firstPartSolution(`${__dirname}/input/input.txt`));
 
 const secondPartSolution = solution(
   flow(
@@ -289,4 +290,4 @@ const secondPartSolution = solution(
   )
 );
 
-secondPartSolution(`${__dirname}/input/test.txt`);
+//secondPartSolution(`${__dirname}/input/test.txt`);
